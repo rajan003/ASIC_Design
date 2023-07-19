@@ -1,6 +1,6 @@
-# ASIC_Design
+# ASIC_Design 
 Designing Complex ASIC  using system verilog
-
+### Author : Anurag Singh , QC Bangalore
 Problem-1: Designing Synchronous Bridge with Unequal data size.
         >> Input side: clk,rst,vld_i, [3:0] data_in
         >> Output Side: clk,rst, Vld_o, [4:0]data_out
