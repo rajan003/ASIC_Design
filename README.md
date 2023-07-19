@@ -8,5 +8,5 @@ Problem-1: Designing Synchronous Bridge with Unequal data size.
       >>> there is no handshake i.e No ready either at input or Output.
       
 Solution: i have implemented using 2 approaches in system verilog.
-Solution-1: Here , im going with most linient approach by taking a 20 bit buffer and 2 pointers wr 7 rd.
-Solution-2: Here, a more efficient and optimised solution is presented.
+        Solution-1:sync_bridge.sv >> Here , im going with most linient approach by taking a 20 bit buffer and 2 pointers wr 7 rd.
+        Solution-2: Here, a more efficient and optimised solution is presented.
