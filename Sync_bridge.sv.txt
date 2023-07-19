@@ -1,0 +1,61 @@
+module sync_bridge (
+			input clk,
+			input rst,
+
+			/// Sync data IN
+			input logic vld1,
+			input logic [3:0] data_in,
+
+			/// Sync data Out///
+			output logic vld2,
+			output logic [4:0] data_out);
+
+/////////rd and write counter value/////
+logic [2:0] n;
+logic [1:0] m;
+
+//////Now Chossing a Buffer with size which is Divisible by Both the Input and output data width//
+////// Buffer size = LCM { 4=input width, 5=output width} =20
+
+///creating an union so that reading an writing happens in the same Buffer but can be addressed Independently
+typedef union packed {
+			logic [4:0][3:0] xin;
+			logic [3:0][4:0] xout;
+			} enum_buf;
+
+enum_buf mem ;
+
+always@(posedge clk, posedge rst) 
+  begin 
+	if(rst)
+	begin 
+	   n<= '0;
+	   m<= '0;
+	   vld2 <= '0;
+	   data_out <= '0;
+	end 
+
+	else begin 
+	if(vld1) begin 
+		mem.xin[n] <= data_in;
+		n <= n+1;
+	end
+	else if (n > m) begin 
+		vld2 <= 1;
+		data_out <= mem.xout[m];
+		m<= m+1;
+	end 
+end 
+
+
+
+
+
+
+
+
+
+
+
+
+
